@@ -1,0 +1,23 @@
+{
+  "name": "jquery-plugin-popit",
+  "version": "1.0.0",
+  "description": "A jquery plugin for using bootstrap's popover on any button",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesandrews23/popit.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "author": "James Andrews",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesandrews23/popit/issues"
+  },
+  "homepage": "https://github.com/jamesandrews23/popit#readme"
+}
