@@ -30,11 +30,13 @@
             options.content = getTemplate(buttons, options.content);
 
             $el.popover(options).on("inserted.bs.popover", function(){
-                $('.confirmBtn').click(function(){
+                $('.confirmBtn').click(function(e){
+                    e.stopImmediatePropagation();
                     handleClick($el, "clicked.pop.confirm");
                 });
 
-                $('.cancelBtn').click(function(){
+                $('.cancelBtn').click(function(e){
+                    e.stopImmediatePropagation();
                     handleClick($el, "clicked.pop.cancel");
                 });
             });
