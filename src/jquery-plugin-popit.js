@@ -2,8 +2,8 @@
     const getTemplate = function(buttons, content){
         return `<div style="margin-bottom:10px;">${content}</div>
                 <div style="text-align:center">
-                <button class="${buttons.confirm.class}" id="popitBtnConfirm" type="button">${buttons.confirm.title}</button>
-                <button class="${buttons.cancel.class}" id="popitBtnCancel" type="button">${buttons.cancel.title}</button>
+                <button class="${buttons.confirm.class} confirmBtn" type="button">${buttons.confirm.title}</button>
+                <button class="${buttons.cancel.class} cancelBtn" type="button">${buttons.cancel.title}</button>
                 </div>`;
     };
 
@@ -30,11 +30,11 @@
             options.content = getTemplate(buttons, options.content);
 
             $el.popover(options).on("inserted.bs.popover", function(){
-                $('#popitBtnConfirm').click(function(){
+                $('.confirmBtn').click(function(){
                     handleClick($el, "clicked.pop.confirm");
                 });
 
-                $('#popitBtnCancel').click(function(){
+                $('.cancelBtn').click(function(){
                     handleClick($el, "clicked.pop.cancel");
                 });
             });
@@ -57,7 +57,8 @@
         btnConfirmStyle: "btn btn-sm btn-primary",
         btnCancelStyle: "btn btn-sm btn-secondary",
         html:true,
-        sanitize: false
+        sanitize: false,
+        container: "body"
     };
 
     $.fn.popit.confirmEvent = "clicked.pop.confirm";
