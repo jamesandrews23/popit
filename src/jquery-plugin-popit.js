@@ -1,9 +1,9 @@
 +function($){
-    const getTemplate = function(btnConfirmTitle, btnCancelTitle, content){
+    const getTemplate = function(buttons, content){
         return `<div style="margin-bottom:10px;">${content}</div>
                 <div style="text-align:center">
-                <button class="btn btn-primary btn-sm" id="popitBtnConfirm" type="button">${btnConfirmTitle}</button>
-                <button class="btn btn-secondary btn-sm" id="popitBtnCancel" type="button">${btnCancelTitle}</button>
+                <button class="${buttons.confirm.class}" id="popitBtnConfirm" type="button">${buttons.confirm.title}</button>
+                <button class="${buttons.cancel.class}" id="popitBtnCancel" type="button">${buttons.cancel.title}</button>
                 </div>`;
     };
 
@@ -17,11 +17,17 @@
         return this.each(function(){
             let $el = $(this);
 
-            //override data-attributes take precedence over passed options, which take precedence over defaults
+            //data-attributes take precedence over passed options, which take precedence over defaults
             let options = $.extend({}, $.fn.popit.defaults, userOptions, $el.data());
 
+            let buttons =
+                {
+                    confirm: {title: options.btnConfirmTitle, class: options.btnConfirmStyle},
+                    cancel: {title: options.btnCancelTitle, class: options.btnCancelStyle}
+                };
+
             //set the content to the template with the confirm and cancel buttons
-            options.content = getTemplate(options.btnConfirmTitle, options.btnCancelTitle, options.content);
+            options.content = getTemplate(buttons, options.content);
 
             $el.popover(options).on("inserted.bs.popover", function(){
                 $('#popitBtnConfirm').click(function(){
@@ -31,7 +37,6 @@
                 $('#popitBtnCancel').click(function(){
                     handleClick($el, "clicked.pop.cancel");
                 });
-
             });
 
             $el.click(function(){
@@ -49,6 +54,8 @@
         placement: "top", //where popover appears
         btnConfirmTitle: "Confirm",
         btnCancelTitle: "Cancel",
+        btnConfirmStyle: "btn btn-sm btn-primary",
+        btnCancelStyle: "btn btn-sm btn-secondary",
         html:true,
         sanitize: false
     };
