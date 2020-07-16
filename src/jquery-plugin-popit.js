@@ -1,6 +1,6 @@
 +function($){
     const getTemplate = function(btnConfirmTitle, btnCancelTitle, content){
-        return `<div>${content}</div>
+        return `<div style="margin-bottom:10px;">${content}</div>
                 <div style="text-align:center">
                 <button class="btn btn-primary btn-sm" id="popitBtnConfirm" type="button">${btnConfirmTitle}</button>
                 <button class="btn btn-secondary btn-sm" id="popitBtnCancel" type="button">${btnCancelTitle}</button>
@@ -37,7 +37,8 @@
             $el.click(function(){
                 let $el = $(this);
                 $el.prop("disabled", true)
-                    .prepend('<span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+                    .prepend('<span id="spinner" style="margin-right:5px;" class="spinner-border spinner-border-sm" ' +
+                        'role="status" aria-hidden="true"></span>');
             });
         });
     };
@@ -50,5 +51,9 @@
         btnCancelTitle: "Cancel",
         html:true,
         sanitize: false
-    }
+    };
+
+    $.fn.popit.confirmEvent = "clicked.pop.confirm";
+
+    $.fn.popit.cancelEvent = "clicked.pop.cancel";
 }(jQuery);
