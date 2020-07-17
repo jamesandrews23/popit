@@ -20,9 +20,9 @@ Data attributes will take precedence.
 
 # Multiple
 
-Apply to multiple buttons at the same time by calling popit on a class like `$([data-toggle="popover"]).popit()`
+Apply to multiple buttons at the same time by calling popit through like `$([data-toggle="popover"]).popit()`
 
-#Events
+# Events
 
 Listen for the event `clicked.pop.confirm` to run your logic on the confirm click. Likewise for cancel listen for 
 `clicked.pop.cancel`. For example `$("yourelement").popit().on("clicked.pop.confirm", function(event, buttonEl){ your logic });`
